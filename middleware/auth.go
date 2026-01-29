@@ -33,7 +33,6 @@ func AuthMiddleware(next http.Handler) http.Handler {
 			return
 		}
 
-		// Сохраняем данные пользователя в контексте запроса
 		ctx := context.WithValue(r.Context(), UserCtxKey, claims)
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
